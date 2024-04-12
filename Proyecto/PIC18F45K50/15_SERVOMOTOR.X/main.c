@@ -19,25 +19,25 @@
  */
 
 /*
-    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
-    
-    Subject to your compliance with these terms, you may use Microchip software and any 
-    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
-    license terms applicable to your use of third party software (including open source software) that 
+    (c) 2018 Microchip Technology Inc. and its subsidiaries.
+
+    Subject to your compliance with these terms, you may use Microchip software and any
+    derivatives exclusively with Microchip products. It is your responsibility to comply with third party
+    license terms applicable to your use of third party software (including open source software) that
     may accompany Microchip software.
-    
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
-    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
+
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY
+    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS
     FOR A PARTICULAR PURPOSE.
-    
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
-    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
-    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
-    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
-    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
+
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP
+    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO
+    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL
+    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT
+    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS
     SOFTWARE.
  */
 
@@ -46,7 +46,8 @@
 /*
                          Main application
  */
-void main(void) {
+void main( void )
+{
     // Initialize the device
     SYSTEM_Initialize();
 
@@ -58,40 +59,42 @@ void main(void) {
     INTERRUPT_GlobalInterruptEnable();
 
     // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
+    // INTERRUPT_GlobalInterruptDisable();
 
     // Enable the Peripheral Interrupts
     INTERRUPT_PeripheralInterruptEnable();
 
     // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
+    // INTERRUPT_PeripheralInterruptDisable();
 
-    while (1) {
+    while ( 1 ) {
 
-        for (int i = 0; i < 255; i++) {
-            if (Control_LAT == 1) {
-                __delay_us(500); //0°
+        for ( int i = 0; i < 255; i++ ) {
+            if ( Control_LAT == 1 ) {
+                __delay_us( 500 );  // 0°
                 Control_SetLow();
             }
-            while (Control_LAT == 0);
+            while ( Control_LAT == 0 )
+                ;
         }
 
-        for (int i = 0; i < 255; i++) {
-            if (Control_LAT == 1) {
-                __delay_us(1500); //90°
+        for ( int i = 0; i < 255; i++ ) {
+            if ( Control_LAT == 1 ) {
+                __delay_us( 1500 ); // 90°
                 Control_SetLow();
             }
-            while (Control_LAT == 0);
+            while ( Control_LAT == 0 )
+                ;
         }
 
-        for (int i = 0; i < 255; i++) {
-            if (Control_LAT == 1) {
-                __delay_us(2500); //180°
+        for ( int i = 0; i < 255; i++ ) {
+            if ( Control_LAT == 1 ) {
+                __delay_us( 2500 ); // 180°
                 Control_SetLow();
             }
-            while (Control_LAT == 0);
+            while ( Control_LAT == 0 )
+                ;
         }
-
     }
 }
 /**
